@@ -9,7 +9,7 @@
     }
 </style>
 
-<script setup>
+<script>
 import HerosItem from './HerosItems.vue'
 import ThorIcon from './icons/IconThor.vue'
 import SpiderManIcon from './icons/IconSpiderMan.vue'
@@ -19,12 +19,43 @@ import CptAmericaIcon from './icons/IconCptAmerica.vue'
 import BlackWidowIcon from './icons/IconBlackWidow.vue'
 import HulkIcon from './icons/IconHulk.vue'
 import OpenCloseProfile from './openCloseProfile.vue'
+
+export default {
+  data() {
+    return {
+      // CREER TOI UN TABLEAU D'OBJECT ICI AVEC DES INFOS SUR TES HEROS ET DANS TON TEMPLATE REGARDE COMMENT MARCHE LES V-FOR ET DANS TA
+      // FONCTION functionToOpenCloseProfile TU LUI ENVOIS LES DONNEES DU HERO
+      heros: [
+        {
+          name: "Thor",
+          power: "Thunder"
+        }
+      ]
+    }
+  },
+  methods: {
+    functionToOpenCloseProfile(val) {
+      console.log(val)
+    }
+  },
+  components: {
+    HerosItem,
+    ThorIcon,
+    SpiderManIcon,
+    HawkeyeIcon,
+    IronManIcon,
+    CptAmericaIcon,
+    BlackWidowIcon,
+    HulkIcon,
+    OpenCloseProfile,
+  }
+}
 </script>
 
 <template>
   <HerosItem>
     <template #icon >
-      <button onclick="openCloseProfile(this);"> <ThorIcon /> </button>
+      <button @click="functionToOpenCloseProfile(this)"> <ThorIcon /> </button>
     </template>
     <template #heading> Thor </template>
   <OpenCloseProfile>
